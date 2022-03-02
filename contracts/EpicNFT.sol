@@ -95,9 +95,7 @@ contract EpicNFT is ERC721URIStorage {
     function makeNFT() public {
         uint256 newItemId = _tokenIds.current();
 
-        if (newItemId >= NFTThreshold) {
-            return;
-        }
+        require(newItemId >= NFTThreshold, "Cannot mint more NFTs");
 
         string memory first = pickFirstWord(newItemId);
         string memory second = pickSecondWord(newItemId);
